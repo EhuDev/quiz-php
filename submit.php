@@ -1,15 +1,40 @@
+<?php
+session_start();
+
+// Check if a new session has started
+if (!isset ($_SESSION['started'])) {
+  // Reset the attempt count
+  $_SESSION['attempt_count'] = 2;
+  // Set a flag to indicate that the session has started
+  $_SESSION['started'] = true;
+}
+
+// Decrement the attempt count
+$_SESSION['attempt_count']--;
+
+// Check if the attempt count is less than 0
+if ($_SESSION['attempt_count'] < 0) {
+  // Redirect the user to main.php with an indication that attempts are exhausted
+  header("Location: quiz.php?attempt=exhausted");
+  exit();
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="quiz.css">
   <title>PHP Quiz Results</title>
 </head>
 
 <body>
-  <div class="main-container">
+
+  </div>
+  <div class="div-container" id="main-container">
     <h1>PHP Quiz Results</h1>
     <div class="result-container">
       <?php
@@ -17,9 +42,9 @@
       $correct_answers = array(
         "q1" => "Hypertext Preprocessor",
         "q2" => "<",
-        "q3" => "fopen",
+        "q3" => "define()",
         "q4" => "echo()",
-        "q5" => "Structured Query Language",
+        "q5" => '$_POST',
         "q6" => "// This is a comment",
         "q7" => "Double",
         "q8" => "Using the . operator",
@@ -53,6 +78,7 @@
           echo "<p class='p1'><strong>Your Answer:</strong> $user_answer</p>";
           echo "<p class='p1'><strong>Correct Answer:</strong>$correct_answer</p>";
           if ($user_answer == $correct_answer) {
+            $score++;
             echo "<p class='p1'><strong>Result:</strong> <span class='result-correct'>Correct!</p>";
           } else {
             echo "<p class='p1'><strong>Result:</strong><span class='result-incorrect'> Wrong!</p>";
@@ -60,12 +86,19 @@
           echo "<hr>";
         }
       }
+
       ?>
 
     </div>
-    <a href="./index.php">
-      <button class="button-31">back</button>
-    </a>
+    <div class="sub-btn">
+      <a href="./index.php">
+        <button class="button-31">Back</button>
+      </a>
+      <a href="./quiz.php">
+        <button class="button-31">Retry</button>
+      </a>
+    </div>
+
   </div>
 </body>
 

@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+// Reset the attempt count when the user visits front.php
+$_SESSION['attempt_count'] = 2;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +21,7 @@
       <h2>Click Start if you ready</h2>
 
     </div>
-    <a href="./main.php" class="button-30">
+    <a href="./quiz.php" class="button-30">
       Start
     </a>
 
