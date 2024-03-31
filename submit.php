@@ -43,7 +43,7 @@ if ($_SESSION['attempt_count'] < 0) {
         "q6" => "// This is a comment",
         "q7" => "Double",
         "q8" => "Using the . operator",
-        "q9" => "Hello World",
+        "q9" => "Hello World;",
         "q10" => ";"
       );
 

@@ -10,25 +10,41 @@ body {
 }
 
 .main-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   max-width: 800px;
   margin: 20px auto;
-  background: rgba(255, 255, 255, 0.2);
+  /* background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18); */
   text-align: center;
   padding: 20px;
 }
-
+.container {
+  border: 2px solid #6aa2b9;
+  padding: 40px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
 h1 {
   color: #c44d2f;
   font-size: 40px;
+  filter: drop-shadow(1px 1px 1px black);
 }
 
 h2 {
-  color: #6aa2b9;
+  color: #c44d2f;
+  filter: drop-shadow(1px 1px 1px black);
 }
 
+input::placeholder {
+  color: #6aa2b9;
+}
 .button-30 {
   align-items: center;
   appearance: none;
@@ -58,13 +74,51 @@ h2 {
   white-space: nowrap;
   will-change: box-shadow, transform;
   font-size: 18px;
+  margin-top: 30px;
+}
+.button-30:focus {
+  box-shadow: #d6d6e7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-30:active {
+  box-shadow: #d6d6e7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+.text {
+  outline: none;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #6aa2b9;
+  width: 200px;
+  height: 30px;
+  margin-left: 15px;
+  font-size: large;
+  color: white;
+  caret-color: #c44d2f;
 }
 
 @media screen and (max-width: 600px) {
   body {
     display: flex;
     align-items: center;
-    justify-self: center;
+    flex-direction: column;
+  }
+  .container {
+    padding: 20px;
+    margin: 20px;
+  }
+  .main-container {
+    margin: 0px;
+    padding: 0;
+    width: 100%;
+    height: 100%;
   }
 
   h1 {
