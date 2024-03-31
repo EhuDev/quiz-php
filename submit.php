@@ -1,14 +1,12 @@
 <?php
 session_start();
-
 // Check if a new session has started
-if (!isset ($_SESSION['started'])) {
+if (!isset($_SESSION['started'])) {
   // Reset the attempt count
   $_SESSION['attempt_count'] = 2;
   // Set a flag to indicate that the session has started
   $_SESSION['started'] = true;
 }
-
 // Decrement the attempt count
 $_SESSION['attempt_count']--;
 
@@ -18,8 +16,6 @@ if ($_SESSION['attempt_count'] < 0) {
   header("Location: quiz.php?attempt=exhausted");
   exit();
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +28,6 @@ if ($_SESSION['attempt_count'] < 0) {
 </head>
 
 <body>
-
   </div>
   <div class="div-container" id="main-container">
     <h1>PHP Quiz Results</h1>
@@ -57,7 +52,7 @@ if ($_SESSION['attempt_count'] < 0) {
 
       // Loop through submitted answers and check correctness
       foreach ($_POST as $question => $user_answer) {
-        if (isset ($correct_answers[$question])) {
+        if (isset($correct_answers[$question])) {
           $correct_answer = $correct_answers[$question];
           if ($user_answer == $correct_answer) {
             $score++;
@@ -71,8 +66,9 @@ if ($_SESSION['attempt_count'] < 0) {
       echo "<hr>";
 
       // Loop through submitted answers again to display individual question results
+      
       foreach ($_POST as $question => $user_answer) {
-        if (isset ($correct_answers[$question])) {
+        if (isset($correct_answers[$question])) {
           $correct_answer = $correct_answers[$question];
           echo "<p class='p1'><strong>Question:</strong> $question</p>";
           echo "<p class='p1'><strong>Your Answer:</strong> $user_answer</p>";
@@ -86,9 +82,7 @@ if ($_SESSION['attempt_count'] < 0) {
           echo "<hr>";
         }
       }
-
       ?>
-
     </div>
     <div class="sub-btn">
       <a href="./index.php">
@@ -98,7 +92,6 @@ if ($_SESSION['attempt_count'] < 0) {
         <button class="button-31">Retry</button>
       </a>
     </div>
-
   </div>
 </body>
 

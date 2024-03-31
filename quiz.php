@@ -7,25 +7,22 @@
   <link rel="stylesheet" href="quiz.css">
   <script src="https://cdn.lordicon.com/lordicon.js"></script>
   <title>PHP Quiz</title>
-
 </head>
 
 <body>
-
   <div class="div-container">
     <h1>PHP Quiz</h1>
     <?php
     session_start();
-    if ((isset ($_GET['attempt']) && $_GET['attempt'] == 'exhausted') || (isset ($_SESSION['attempt_count']) && $_SESSION['attempt_count'] == 0)) {
-      echo "<p id='sorry'>Sorry, you have exhausted all attempts.</p>";
-
+    if ((isset($_GET['attempt']) && $_GET['attempt'] == 'exhausted') || (isset($_SESSION['attempt_count']) && $_SESSION['attempt_count'] == 0)) {
+      echo "<p id='sorry'>Apologies, but you've reached the limit of your attempts.</p>";
     }
     ?>
     <div class="container">
       <div class="reset-btn">
         <input type="hidden" name="attempt" value="1">
         <?php
-        if (isset ($_SESSION['attempt_count'])) {
+        if (isset($_SESSION['attempt_count'])) {
           echo "<p>Attempts Remaining: <span id='attempt-count'>" . $_SESSION['attempt_count'] . "</span>
           <a href='./index.php'>
           <img src='./reset.gif' alt=''>
